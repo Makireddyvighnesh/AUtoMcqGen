@@ -43,34 +43,34 @@ class GenerateMCQ():
         sample(temperature=1.0, n=int(self.n))  # decoder 
         print(0)
         
-        "Q:Look at the given document {document}. Your task is to generate a multiple-choice question based on the information provided in the document. "
+        "Q:Look at the given document {document}. Your task is to generate a multiple-choice question which has only 4 options based on the information provided in the document. "
         print(1)
         "Please ensure that the question is clear and avoid directly referencing the document in the question itself. "
         "Additionally, make the options related and slightly tricky."
         # for i in range(10):
-        "Question: [QUESTION]" where stops_at(QUESTION,'?') and stops_before(QUESTION, 'A:') and not "summarise" in QUESTION and len(TOKENS(QUESTION))<70 and \
-                       not 'paraphrased' in QUESTION and not 'essay' in QUESTION and not "summary" in QUESTION and \
-                       not 'Write' in QUESTION and not '----' in QUESTION and len(QUESTION)>10 
+        "Question: [QUESTION]" # where stops_at(QUESTION,'?') and stops_before(QUESTION, 'A:') and not "summarise" in QUESTION and len(TOKENS(QUESTION))<70 and \
+        #                not 'paraphrased' in QUESTION and not 'essay' in QUESTION and not "summary" in QUESTION and \
+        #                not 'Write' in QUESTION and not '----' in QUESTION and len(QUESTION)>10 
         print(f"Question:\n {QUESTION}") 
         "The options for the question {QUESTION}  "
         time.sleep(30)
         "So the first option is: "
         # for i in range(100):
-        "A: [A]" where stops_before(A, 'B') and len(TOKENS(A))<50 and not 'Generate according to:' in A and len(TOKENS(A))>2 and stops_before(A, "So the second option is: ")
+        "A: [A]" #where stops_before(A, 'B') and len(TOKENS(A))<50 and not 'Generate according to:' in A and len(TOKENS(A))>2 and stops_before(A, "So the second option is: ")
         time.sleep(50)
         #  stops_at(A,'.') and 
         print(f"A: {A}")
         
-        "B: [B]" where stops_before(B,'C') and len(TOKENS(B))<50 and not 'Generate according to:' in B and len(TOKENS(B))>2 and not '2.' in B and stops_before(B, "So the third option is: ")
+        "B: [B]" # where stops_before(B,'C') and len(TOKENS(B))<50 and not 'Generate according to:' in B and len(TOKENS(B))>2 and not '2.' in B and stops_before(B, "So the third option is: ")
         print(f"B: {B}")
         time.sleep(40)
         # "So the third option is: "
-        "C: [C]" where stops_before(C,'D') and len(TOKENS(C))<50 and not 'Generate according to:' in C and len(TOKENS(C))>2 and not '3.' in C and stops_before(C, "So the forth option is: ")
+        "C: [C]" # where stops_before(C,'D') and len(TOKENS(C))<50 and not 'Generate according to:' in C and len(TOKENS(C))>2 and not '3.' in C and stops_before(C, "So the forth option is: ")
         print(f"C :\n {C}")
         time.sleep(50)
         # "So the forth option is: "
-        "D: [D]" where stops_before(D, '\nThe answer for this question is ') and  len(TOKENS(D))<50  and stops_at(D, '.') and not 'Generate according to:' in D \
-                       and not 'E:' in D and len(TOKENS(D))>2  and not '4.' in D 
+        "D: [D]" # where stops_before(D, '\nThe answer for this question is ') and  len(TOKENS(D))<50  and stops_at(D, '.') and not 'Generate according to:' in D \
+                       # and not 'E:' in D and len(TOKENS(D))>2  and not '4.' in D 
         print(f"D :\n {D}")
         # for i in range(5):
         "And the answer for the question is "
