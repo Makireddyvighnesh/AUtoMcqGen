@@ -86,18 +86,6 @@ This project is a web application that allows users to upload PDF files, generat
 
 4. The application will extract text from the PDF, generate MCQs, and send them to the specified email address as a PDF.
 
-## Project Structure
-
-- `main.py`: The main Flask application file.
-- `Preprocessing.py`: Contains classes for PDF cleaning and text summarization.
-- `Query.py`: Contains classes for generating and evaluating MCQs.
-- `templates/`: Contains the HTML templates for the web interface.
-- `static/`: Contains static files like CSS and uploaded files.
-
-## Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request.
-
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
