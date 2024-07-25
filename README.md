@@ -29,7 +29,7 @@ This project is a web application that allows users to upload PDF files, generat
 
     ```bash
     git clone https://github.com/Makireddyvighnesh/AUtoMcqGen.git
-    cd mcq-generator
+    cd AUtoMcqGen
     ```
 
 2. Create a virtual environment and activate it:
