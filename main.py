@@ -189,9 +189,7 @@ def home():
 
 
 if __name__ == '__main__':
-    text = '''
-    'set', 'algorithm', 'machine', 'learning', 'example', 'cat', 'datum', 'dev', 'training', 'image', 'error', 'test', 'neural', 'learn', 'draft', 'page', 'network', 'team', 'ng', 'performance', 'distribution', 'yearning', 'andrew', 'picture', 'different', 'mobile', 'use', 'number', 'internet', 'human', 'suppose', 'variance', 'idea', 'train', 'new', 'big', 'size', 'help', 'small', 'build', 'category', 'large', 'task', 'high', 'system', 'huge', 'well', 'increase', 'classifier', 'bias', 'try', 'app', 'rate', 'give', 'level', 'work', 'label', 'city', 'feature', 'usually', 'need', 'model', 'include', 'look', 'add', 'curve', 'y', 'user', 'x', 'metric', 'dataset', 'know', 'parameter', 'improve', 'regularization', 'analysis', 'want', 'problem', 'technique', 'discuss', 'direction', 'reduce', 'effect', 'take', 'long', 'deep', 'book', 'define', 'evaluate', 'draw', 'progress', 'come', 'evaluation', 'e', 'accuracy', 'estimate', 'process', 'choose', 'doctor', 'care'
-    '''
+    
     # lmql_generator = GenerateMCQ()
     model_llm = initialize_model()
     app.run(debug=True, use_reloader=False)
