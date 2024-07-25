@@ -16,19 +16,17 @@ from Preprocessing_text_MCQ import TextSummarizer, TopicModeling, PDFCleaner
 from LMQL_Q_A import GenerateMCQ,EvaluateMCQ
 import pdfkit
 openai_api_key = os.getenv("OPENAI_API_KEY")
-# Assuming the notebook is named "my_notebook.ipynb"
-# %run "C:/path/to/your/notebook/my_notebook.ipynb"
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'supersecretkey'
 app.config['UPLOAD_FOLDER'] = 'static/files'
-app.config['MAIL_SERVER'] = 'smtp.example.com'  # Change to your email server
-app.config['MAIL_PORT'] = 465  # Change to your email server's port
+app.config['MAIL_SERVER'] = 'smtp.example.com'  
+app.config['MAIL_PORT'] = 465  
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = 'makireddyvighnesh@example.com'  # Change to your email address
-app.config['MAIL_PASSWORD'] = 'nannaamma@7389'  # Change to your email password
+app.config['MAIL_USERNAME'] = 'makireddyvighnesh@example.com' 
+app.config['MAIL_PASSWORD'] = 'nannaamma@7389'  
 mail = Mail(app)
 
 def initialize_model():
@@ -45,7 +43,7 @@ class UploadFileForm(FlaskForm):
 def home():
     form = UploadFileForm()
     if form.validate_on_submit():
-        file = form.file.data # First grab the file
+        file = form.file.data 
         file_path=os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename))
         file.save(file_path)
         pdf_cleaner = PDFCleaner(filename=file_path)
@@ -59,7 +57,7 @@ def home():
         mail = request.form['mail']
         print(f"User mail: {mail}")
         
-        # Extracting text feom document
+        # Extracting text from document
         all_text = pdf_cleaner.extract_text(5,90)
         sentences = pdf_cleaner.chunk_text(chunk_size=5000)
 
@@ -104,12 +102,10 @@ def home():
         size = 4000
         text = topic_mapping if flag else summary
         print(text)
-        print("HElooooooooooooooo")
         if flag:
             for value in text.values():
                 print(value)
-        # print("heloooooooooo",text[i].values())
-        # Dividing Preorocessed text to small chunks
+        # Dividing Prerocessed text to small chunks
         if not flag:
             chunks = lmql_generator.chunk_text(text, size)
             for i, chunk in enumerate(chunks):
@@ -169,10 +165,8 @@ def home():
             for mcq in mcqs:
                 html_content += f"<p>{mcq}</p>"
 
-            # Define PDF file path
             pdf_file_path = 'generated_mcqs.pdf'
 
-            # Convert HTML to PDF
             pdfkit.from_string(html_content, pdf_file_path)
 
             return pdf_file_path
@@ -200,10 +194,6 @@ if __name__ == '__main__':
     '''
     # lmql_generator = GenerateMCQ()
     model_llm = initialize_model()
-
-    # # Your main code here
-    # mcqs = lmql_generator.query(chunks= text,model=model )
-    # print(mcqs)
     app.run(debug=True, use_reloader=False)
 
 
