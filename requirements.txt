@@ -1,0 +1,11 @@
+Flask
+Flask-WTF
+Flask-Mail
+PyPDF2
+scikit-learn
+nltk
+gensim
+lmql
+pdfkit
+openai
+python-dotenv
