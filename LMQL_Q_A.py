@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import lmql
 import os
 import pandas as pd
@@ -21,16 +15,9 @@ nest_asyncio.apply()
 from rouge import Rouge
 rouge=Rouge()
 import textwrap
-
-
-# In[2]:
     
 model = lmql.model("local:llama.cpp:zephyr-7b-beta.Q4_K_M.gguf", 
                         tokenizer = 'HuggingFaceH4/zephyr-7b-beta', inprocess = True) 
-    
-
-# In[ ]:
-
 
 class GenerateMCQ():
     def __init__(self,n):
@@ -155,59 +142,16 @@ class GenerateMCQ():
             self.result.append(res)
 
         return self.result
-            # ans =[question, option1, option2, option3, option4]
-            # res.append(ans)
-        # '''lmql
-        # print(1)
-        # "What is the capital of India [ans]" where len(ans)<20
-        # print(ans)
-        # return ans
-        # '''
-        
-    # def topic_query(topics, user_topics, ):
-        
-    
-
-    
-
-# lmql_generator = GenerateMCQ()
-# size = 4000
-# chunks = lmql_generator.chunk_text(text, size)
-
-# for i, chunk in enumerate(chunks):
-#     print(f"Chunk {i + 1}:")
-#     print(len(chunk))
-#     print("=" * 20)
-
-# if __name__ == "__main__":
-#     text = '''
-#     'set', 'algorithm', 'machine', 'learning', 'example', 'cat', 'datum', 'dev', 'training', 'image', 'error', 'test', 'neural', 'learn', 'draft', 'page', 'network', 'team', 'ng', 'performance', 'distribution', 'yearning', 'andrew', 'picture', 'different', 'mobile', 'use', 'number', 'internet', 'human', 'suppose', 'variance', 'idea', 'train', 'new', 'big', 'size', 'help', 'small', 'build', 'category', 'large', 'task', 'high', 'system', 'huge', 'well', 'increase', 'classifier', 'bias', 'try', 'app', 'rate', 'give', 'level', 'work', 'label', 'city', 'feature', 'usually', 'need', 'model', 'include', 'look', 'add', 'curve', 'y', 'user', 'x', 'metric', 'dataset', 'know', 'parameter', 'improve', 'regularization', 'analysis', 'want', 'problem', 'technique', 'discuss', 'direction', 'reduce', 'effect', 'take', 'long', 'deep', 'book', 'define', 'evaluate', 'draw', 'progress', 'come', 'evaluation', 'e', 'accuracy', 'estimate', 'process', 'choose', 'doctor', 'care'
-#     '''
-#     lmql_generator = GenerateMCQ()
-#     model = lmql.model("local:llama.cpp:zephyr-7b-beta.Q4_K_M.gguf", tokenizer='HuggingFaceH4/zephyr-7b-beta', inprocess=True)
-
-#     # Your main code here
-#     mcqs = lmql_generator.query(chunks= text,model=model )
-#     print(mcqs)
-# # ## Evaluating the generated questions with GPT
-
-# In[ ]:
-
 
 class EvaluateMCQ():
     def __init__(self):
         self.result=[]
-
     
     @lmql.query
     def evaluate(self,document, MCQ):
       '''lmql
       print("Evaluating MCQs")
       "Your Task is to evaluate the MCQ question which is given to you later    using the reference document {document}"
-      # j=0
-    
-      # for i in range(1):
-      #   for j in range(4):
       q, A, B,C,D, answer = MCQ
       # print(q,a,b,c,d)
       "Look at the "
@@ -248,24 +192,3 @@ class EvaluateMCQ():
           time.sleep(40)
           "Correct Answer is: [ANSWER]" where ANSWER in ["A", "B","C","D"]
         '''
-
-# evaluate_mcqs = EvaluateMCQ()
-# res=mcqs
-# res_after_eval = []
-# for j in range(3):
-#     # for j in range(1):
-#     # MCQ = [res[i][j].variables['QUESTION'],res[i][j].variables['A'],res[i][j].variables['B'],res[i][j].variables['C'],res[i][j].variables['D'], res[i][j].variables['ANSWER']]
-#     MCQ = [res[j].variables['QUESTION'],res[j].variables['A'],res[j].variables['B'],res[j].variables['C'],res[j].variables['D'], res[j].variables['ANSWER']]
-#     print(j)
-#     response_eval = evaluate_mcqs(document = chunks[j],MCQ= MCQ)
-#     if response_eval.variables['VAL_QUE'] != 'Good' or response_eval.variables['VAL_OPT']!='Related':
-#         res_after_eval.append(response_eval)
-#         print(response_eval)
-#         print(MCQ)
-#     time.sleep(30)
-
-    
-
-# MCQ = result.variables
-# res_after_eval = evaluate(document=chunks[0], MCQ=MCQ)
-
