@@ -11,7 +11,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import time
 import lmql
 import sys
-sys.path.append(r'C:\Users\vighnesh\Documents\DataScience')
+# sys.path.append(r'C:\Users\vighnesh\Documents\DataScience')
 from Preprocessing_text_MCQ import TextSummarizer, TopicModeling, PDFCleaner
 from LMQL_Q_A import GenerateMCQ,EvaluateMCQ
 import pdfkit
@@ -25,8 +25,8 @@ app.config['MAIL_SERVER'] = 'smtp.example.com'
 app.config['MAIL_PORT'] = 465  
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = 'makireddyvighnesh@example.com' 
-app.config['MAIL_PASSWORD'] = 'nannaamma@7389'  
+app.config['MAIL_USERNAME'] = '' 
+app.config['MAIL_PASSWORD'] = ''  
 mail = Mail(app)
 
 def initialize_model():
